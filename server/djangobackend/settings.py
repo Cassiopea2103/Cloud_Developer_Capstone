@@ -27,7 +27,7 @@ DEBUG = True
 
 APPEND_SLASH = True
 
-ALLOWED_HOSTS = ['localhost','<Your app URL>']
+ALLOWED_HOSTS = ['localhost','*']
 
 CSRF_TRUSTED_ORIGINS = ['<Your app URL>']
 
@@ -58,7 +58,10 @@ ROOT_URLCONF = 'djangobackend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            # configure Django to recognize templates in djangoapp : 
+            BASE_DIR/"djangoapp/templates/djangoapp"
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,3 +129,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
 MEDIA_URL = '/media/'
+STATICFILES_DIRS = [
+    BASE_DIR/"static/media/images"
+]

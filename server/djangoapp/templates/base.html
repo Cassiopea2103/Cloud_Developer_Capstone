@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Best Cars</title>
+    <link rel="icon" href="{% static 'cars/logo.ico' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+
+</head>
+
+    <body>
+    <!--Navbar-->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- Navbar Brand -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img 
+                    src="{% static 'cars/logo.png' %}" 
+                    alt="Best Cars Logo" 
+                    width="50" 
+                    height="50"
+                    class="rounded rounded-circle border border-1 border-secondary "    
+                    >
+                    <span>BEST CARS</span>
+                </a>
+            </div>
+
+            <!-- Navbar items -->
+            <ul class="nav navbar-nav navbar-right flex-row align-items-center ">
+                <!-- About Us -->
+                <li>
+                    <a class="m-3" href="{% url 'about' %}">About Us</a>
+                </li>
+                <!-- Authenticated user ( display logout options and user infos ) -->
+                {% if user.is_authenticated %}
+                <li>
+                    <a class="btn btn-link" href="#">{{ user.first_name }}({{ user.username }})</a>
+                    <a class="btn btn-link" href="logout">Logout</a>
+                </li>
+        
+                {% else %}
+                <!-- Registration Form / Login option -->
+                <li>
+                    <form class="form-inline" action="" method="post">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Username" name="username" >
+                            <input type="password" class="form-control" placeholder="Password" name="psw" >
+                            <button class="btn btn-primary" type="submit">Login</button>
+                            <a class="btn btn-link" href="signup">Sign Up</a>
+                        </div>
+                    </form>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <main role="main">
+        <div class="container-fluid">
+            <!-- There goes the main of the body -->
+            {% block main %}
+        
+            {% endblock main %}
+        </div>
+    </main> 
+    
+    <footer class="bg-dark text-light py-5 mt-2">
+        <div class="container text-center">
+            <p>&copy; 2024 Best Cars. All rights reserved &#8482;.</p>
+            <p>Designed with <i class="text-light  fas fa-heart"></i> by Cassiopea</p>
+            <p><a href="{% url 'contact' %}" class="text-primary ">Contact Us</a></p>
+        </div>
+    </footer>
+        
+    </body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block main %}
+<div class="container mt-3">
+    <h2 class="mb-4 text-primary">Contact Us</h2>
+    <p class="lead text-muted">We'd love to hear from you. Here's how you can reach us:</p>
+
+    <div class="row">
+        <div class="col-md-6 bg-light p-3">
+            <h4 class="text-info">Visit Us</h4>
+            <p>123 Elm Street, Syracuse , NY</p>
+        </div>
+        <div class="col-md-6 bg-light p-3">
+            <h4 class="text-info">Contact Info</h4>
+            <p>Email: <a href="mailto:info@example.com" class="text-success">info@bestcars.com</a></p>
+            <p>Phone: +1 (555) 123-4567</p>
+        </div>
+    </div>
+
+    <div class="mt-4 text-center">
+        <img src="{% static 'cars/company_address.png' %}" alt="Best Cars" class="img-fluid rounded-circle" style="max-width: 200px;">
+    </div>
+</div>
+{% endblock %}

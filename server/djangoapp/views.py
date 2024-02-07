@@ -14,16 +14,14 @@ import json
 logger = logging.getLogger(__name__)
 
 
-# Create your views here.
+# About Us  : 
+def about_us ( request  ) :
+    return render ( request , 'about_us.html'  )
 
 
-# Create an `about` view to render a static about page
-# def about(request):
-# ...
-
-
-# Create a `contact` view to return a static contact page
-#def contact(request):
+# Contact Us : 
+def contact_us ( request ) :
+    return render ( request , 'contact_us.html' )
 
 # Create a `login_request` view to handle sign in request
 # def login_request(request):
@@ -41,7 +39,7 @@ logger = logging.getLogger(__name__)
 def get_dealerships(request):
     context = {}
     if request.method == "GET":
-        return render(request, 'djangoapp/index.html', context)
+        return render(request, 'index.html', context)
 
 
 # Create a `get_dealer_details` view to render the reviews of a dealer

@@ -3,15 +3,13 @@ from django.conf.urls.static import static
 from django.conf import settings
 from . import views
 
-app_name = 'djangoapp'
+
 urlpatterns = [
-    # route is a string contains a URL pattern
-    # view refers to the view function
-    # name the URL
-
-    # path for about view
-
-    # path for contact us view
+ 
+    # About Us :
+    path ( route = 'about' , view = views.about_us , name = "about") ,
+    # Contact Us :
+    path ( route = 'contact', view = views.contact_us, name="contact" ) ,
 
     # path for registration
 
@@ -19,7 +17,7 @@ urlpatterns = [
 
     # path for logout
 
-    path(route='', view=views.get_dealerships, name='index'),
+    path(route='', view=views.get_dealerships, name="home"),
 
     # path for dealer reviews view
 
